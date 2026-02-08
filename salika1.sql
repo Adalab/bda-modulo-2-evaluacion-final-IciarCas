@@ -8,9 +8,8 @@ SELECT DISTINCT title FROM film;
 
 SELECT title, rating FROM film 
 WHERE rating = "PG-13";
-
--- 3. Encuentra el título y la descripción de todas las películas que contengan la palabra "amazing" en su
--- descripción.
+/* 3. Encuentra el título y la descripción de todas las películas que contengan la palabra "amazing" en su
+descripción.*/
 
 SELECT title, description
 FROM film
@@ -39,23 +38,23 @@ SELECT actor_id, first_name
 FROM actor
 WHERE actor_id BETWEEN 10 AND 20;
 
--- 8. Encuentra el título de las películas en la tabla film que no sean ni "R" ni "PG-13" en cuanto a su
--- clasificación.
+/* 8. Encuentra el título de las películas en la tabla film que no sean ni "R" ni "PG-13" en cuanto a su
+clasificación. */
 
 SELECT title, rating
 FROM film
 WHERE rating NOT IN ('R', 'PG-13');
 
--- 9. Encuentra la cantidad total de películas en cada clasificación de la tabla film y muestra la
--- clasificación junto con el recuento.
+/* 9. Encuentra la cantidad total de películas en cada clasificación de la tabla film y muestra la
+clasificación junto con el recuento. */
 
 SELECT COUNT(film_id), rating
 FROM film
 GROUP BY rating;
 
 
--- 10. Encuentra la cantidad total de películas alquiladas por cada cliente y muestra el ID del cliente, su
--- nombre y apellido junto con la cantidad de películas alquiladas
+/* 10. Encuentra la cantidad total de películas alquiladas por cada cliente y muestra el ID del cliente, su
+nombre y apellido junto con la cantidad de películas alquiladas */
 
 SELECT c.customer_id, c.first_name, c.last_name, COUNT(r.rental_id)
 FROM customer AS c
@@ -63,8 +62,8 @@ INNER JOIN rental AS r
 USING (customer_id)
 GROUP BY c.customer_id;
 
--- 11. Encuentra la cantidad total de películas alquiladas por categoría y muestra el nombre de la categoría
--- junto con el recuento de alquileres.
+/* 11. Encuentra la cantidad total de películas alquiladas por categoría y muestra el nombre de la categoría
+junto con el recuento de alquileres. */
 
 SELECT COUNT(r.rental_id), ca.name
 FROM rental AS r 
@@ -76,8 +75,8 @@ INNER JOIN category AS ca
 USING(category_id)
 GROUP BY ca.name;
 
--- 12. Encuentra el promedio de duración de las películas para cada clasificación de la tabla film y
--- muestra la clasificación junto con el promedio de duración.
+/* 12. Encuentra el promedio de duración de las películas para cada clasificación de la tabla film y
+muestra la clasificación junto con el promedio de duración. */
 
 SELECT ROUND(AVG(length)), ca.name
 FROM film

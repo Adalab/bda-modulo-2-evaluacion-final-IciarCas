@@ -8,6 +8,8 @@ SELECT DISTINCT title FROM film;
 
 SELECT title, rating FROM film 
 WHERE rating = "PG-13";
+
+
 /* 3. Encuentra el título y la descripción de todas las películas que contengan la palabra "amazing" en su
 descripción.*/
 
@@ -103,10 +105,25 @@ SELECT f.title, f.description
 FROM film AS f
 WHERE f.description REGEXP 'dog|cat';
 
+
+
 -- 15. Encuentra el título de todas las películas que fueron lanzadas entre el año 2005 y 2010.
 
+-- Opción 1
 SELECT * FROM film;
 
 SELECT f.title, f.release_year
 FROM film AS f
 WHERE f.release_year >= 2005 AND f.release_year <= 2010;
+
+-- Opción 2
+
+SELECT title, release_year
+FROM film
+WHERE release_year >= 2005
+
+UNION
+
+SELECT title, release_year
+FROM film
+WHERE release_year <= 2010;
